@@ -28,7 +28,7 @@ manager = Agent(name="Manager",
             instructions= manager_instructions,
             temperature=0,
             # max_prompt_tokens=25000,
-            model="gpt-4o"
+            model="gpt-4o-mini"
             )
 
 researcher = Agent(name="Researcher",
@@ -36,7 +36,7 @@ researcher = Agent(name="Researcher",
             instructions= researcher_instructions,
             tools=[SearchEngine, ScrapeWebsite], 
             temperature=0,
-            model="gpt-4o"
+            model="gpt-4o-mini"
             )
 
 agency = Agency([

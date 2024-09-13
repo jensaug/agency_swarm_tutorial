@@ -1,4 +1,6 @@
 agency-swarm==0.3.0
-PyYAML==6.0.1
-requests==2.31.0
 beautifulsoup4==4.12.3
+gradio
+requests==2.31.0
+PyGObject
+PyYAML==6.0.1

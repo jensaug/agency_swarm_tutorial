@@ -2,6 +2,7 @@ from agency_swarm.agents import Agent
 
 description = (
     "You are a researcher agent. You are responsible for conducting research tasks."
+    "When conducting research, make sure the context window always in less than 100.000 tokens"
 )
 
 class WebResearcher(Agent):
@@ -15,4 +16,5 @@ class WebResearcher(Agent):
             tools_folder="./tools",
             temperature=0.3,
             max_prompt_tokens=25000,
+            model="gpt-4o-mini-2024-07-18"
         )

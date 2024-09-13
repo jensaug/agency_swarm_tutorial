@@ -1,6 +1,7 @@
 import os
 from agency_swarm import Agency, set_openai_key
 from agent.EnergyExpert import EnergyExpert
+from agent.JensAssistant import JensAssistant
 from agent.Manager import Manager
 from agent.WebResearcher import WebResearcher
 
@@ -23,18 +24,23 @@ MISSION_STATEMENT = (
 #     current_time_utc = now_utc.strftime("%Y-%m-%d %H:%M:%S %Z")
 #     return current_time_utc
 
-manager = Manager()
 energyExpert = EnergyExpert()
+jensAssistant = JensAssistant()
+manager = Manager()
 webResearcher = WebResearcher()
 
 agency = Agency([
        manager,
+       energyExpert,
+       jensAssistant,
        [manager, energyExpert],
-       [manager, webResearcher]
-     ], 
+       [manager, webResearcher],
+       [manager, jensAssistant]
+     ],
      shared_instructions= MISSION_STATEMENT,
      temperature=0,
 )
 
 if __name__ == "__main__":
-    agency.run_demo()
+    #agency.run_demo()
+    agency.demo_gradio(height=900)

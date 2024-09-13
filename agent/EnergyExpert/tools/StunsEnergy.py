@@ -1,10 +1,5 @@
-import json
 import requests
 from agency_swarm.tools import BaseTool
-from pydantic import Field
-#from utils import load_config
-
-#load_config(file_path="./config.yaml")
 
 class StunsEnergy(BaseTool):
 
@@ -14,5 +9,4 @@ class StunsEnergy(BaseTool):
         headers = {
             'Content-Type': 'application/json'
         }
-        response = requests.get(search_url, headers=headers, timeout=10)
-        return response.json()
+        return requests.get(search_url, headers=headers, timeout=10).json()

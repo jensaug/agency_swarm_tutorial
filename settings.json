@@ -1,11 +1,11 @@
 [
     {
-        "id": "asst_auPSv2rjblkryJo1ykLxu0v8",
-        "created_at": 1715880453,
-        "description": "You are a manager agent. You direct the actions of the researcher agent. You are responsible for creating plans and strategies, coordinating activities, and compiling the final response.",
-        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager and a researcher.\nThe manager creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\nYou create a comprehensive plan for the researcher to follow.\nYou begin by thinking step by step to comprehend the task at hand.\nYou come up with a logical plan to complete the task.\nYou direct the researcher agent to complete research tasks.\nYou provide feedback and guidance to the researcher.\nYou assign tasks to the researcher and review their work.\nYou compile the research and findings into a final response.\nYour final response MUST include citations and references to the sources used.\nYour answer should use the infomraion presented by the researcher.\nYou should be aware of today's date to help you answer questions that require current information.\nHere is today's date and time (Timezone: UTC): {datetime}\n",
+        "id": "asst_Xg3Si6QKdTjXGJJYDENeBONE",
+        "created_at": 1726235898,
+        "description": "You are a manager agent. You direct the actions of the researcher agent.You are responsible for creating plans and strategies, coordinating activities, and compiling the final response.",
+        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager, a researcher and an energy expert.\nThe manager asks the energy expert for data relating to energy consumptionThe manager creates a plan for the researcher to follow.\nThe energy expert finds data on energy consumption.The researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\n# Manager Instructions\n\nYou create a comprehensive plan for the researcher to follow.\nYou begin by thinking step by step to comprehend the task at hand.\nYou come up with a logical plan to complete the task.\nYou direct the researcher agent to complete research tasks.\nYou provide feedback and guidance to the researcher.\nYou assign tasks to the researcher and review their work.\nYou compile the research and findings into a final response.\nYour final response MUST include citations and references to the sources used.\nYour answer should use the infomraion presented by the researcher.\nYou should be aware of today's date to help you answer questions that require current information.\n",
         "metadata": {},
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-4o-2024-08-06",
         "name": "Manager",
         "object": "assistant",
         "tools": [
@@ -16,9 +16,9 @@
                     "parameters": {
                         "$defs": {
                             "recipient": {
-                                "const": "Researcher",
                                 "enum": [
-                                    "Researcher"
+                                    "EnergyExpert",
+                                    "WebResearcher"
                                 ],
                                 "title": "recipient",
                                 "type": "string"
@@ -26,7 +26,7 @@
                         },
                         "properties": {
                             "my_primary_instructions": {
-                                "description": "Please repeat your primary instructions step-by-step, including both completed and the following next steps that you need to perfrom. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message or additional_instructions parameters.",
+                                "description": "Please repeat your primary instructions step-by-step, including both completed and the following next steps that you need to perform. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message or additional_instructions parameters.",
                                 "title": "My Primary Instructions",
                                 "type": "string"
                             },
@@ -36,7 +36,7 @@
                                         "$ref": "#/$defs/recipient"
                                     }
                                 ],
-                                "description": "Researcher: You are a researcher agent. You are responsible for conducting research tasks.\n"
+                                "description": "EnergyExpert: You are an expert in the energy field. You are responsible for finding energy data.\nWebResearcher: You are a researcher agent. You are responsible for conducting research tasks.\n"
                             },
                             "message": {
                                 "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
@@ -76,13 +76,14 @@
                             "recipient"
                         ],
                         "type": "object"
-                    }
+                    },
+                    "strict": false
                 },
                 "type": "function"
             }
         ],
         "response_format": "auto",
-        "temperature": 0.0,
+        "temperature": 0.3,
         "tool_resources": {
             "code_interpreter": null,
             "file_search": null
@@ -90,53 +91,15 @@
         "top_p": 1.0
     },
     {
-        "id": "asst_5CPfA6VR7FEeLiKjeidW3hUE",
-        "created_at": 1715880454,
-        "description": "You are a planning agent responsible for creating plans and strategies for the team.",
-        "instructions": "You are a team of agents working together on research tasks.\nYou are led by a manager who directs the activities of the team.\nThe team consists of a planner and a researcher.\nThe planner creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\nYou must create a comprehensive plan for the researcher to follow.\nYou begin by thinking step by step to comprehend the task at hand.\nYou come up with a logical plan to complete the task.\n",
-        "metadata": {},
-        "model": "gpt-4-turbo",
-        "name": "Planner",
-        "object": "assistant",
-        "tools": [],
-        "response_format": "auto",
-        "temperature": 0.0,
-        "tool_resources": {
-            "code_interpreter": null,
-            "file_search": null
-        },
-        "top_p": 1.0
-    },
-    {
-        "id": "asst_QZgWyxr66ZYscoUXVmgS2Vox",
-        "created_at": 1715880454,
+        "id": "asst_8Urpnsm91Nvbi8cYPOSTZsji",
+        "created_at": 1726235898,
         "description": "You are a researcher agent. You are responsible for conducting research tasks.",
-        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager and a researcher.\nThe manager creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\nYou use the tools available to you and the plan provided by the manager to conduct research.\nYou must provide the sources to all the information you find.\nYou can use the search SearchEngine tool to search for information on the web.\nYou can use the ScrapeWebsite tool to scrape content from a website.\nYou msut first use the SearchEngine tool to find information.\nYou must then select the best source from the search results and use the ScrapeWebsite tool to extract information.\n",
+        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager, a researcher and an energy expert.\nThe manager asks the energy expert for data relating to energy consumptionThe manager creates a plan for the researcher to follow.\nThe energy expert finds data on energy consumption.The researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\n# WebResearcher Instructions\n\nYou use the tools available to you and the plan provided by the manager to conduct research\nYou must provide the sources to all the information you find.\nYou can use the search SearchEngine tool to search for information on the web\nYou can use the ScrapeWebsite tool to scrape content from a website.\nYou must first use the SearchEngine tool to find information.\nYou must then select the best source from the search results and use the ScrapeWebsite tool to extract information.\n",
         "metadata": {},
-        "model": "gpt-3.5-turbo",
-        "name": "Researcher",
+        "model": "gpt-4o-2024-08-06",
+        "name": "WebResearcher",
         "object": "assistant",
         "tools": [
-            {
-                "function": {
-                    "name": "SearchEngine",
-                    "description": "SearchEngine: A search engine tool. You can use this tool to search for a specific query on a search engine.\nThe output of the search engine is a dictionary where the key is the source of the information and the value is the content.",
-                    "parameters": {
-                        "properties": {
-                            "search_engine_query": {
-                                "description": "Search engine query to be executed by the tool",
-                                "title": "Search Engine Query",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "search_engine_query"
-                        ],
-                        "type": "object"
-                    }
-                },
-                "type": "function"
-            },
             {
                 "function": {
                     "name": "ScrapeWebsite",
@@ -153,137 +116,11 @@
                             "website_url"
                         ],
                         "type": "object"
-                    }
+                    },
+                    "strict": false
                 },
                 "type": "function"
-            }
-        ],
-        "response_format": "auto",
-        "temperature": 0.0,
-        "tool_resources": {
-            "code_interpreter": null,
-            "file_search": null
-        },
-        "top_p": 1.0
-    },
-    {
-        "id": "asst_z4CXAjXLqi5muJpNHOzkFwAq",
-        "created_at": 1715880454,
-        "description": "You provide a final response to the task.",
-        "instructions": "You are a team of agents working together on research tasks.\nYou are led by a manager who directs the activities of the team.\nThe team consists of a planner, a researcher, and a reporter.\nThe planner creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe reporter compiles the research into a final response.\nYou must work together to complete the task at hand.\n\n\nYou compile the research and findings into a final response.\nYour response must include citations and references to the sources you used.\n",
-        "metadata": {},
-        "model": "gpt-4-turbo",
-        "name": "Reporter",
-        "object": "assistant",
-        "tools": [],
-        "response_format": "auto",
-        "temperature": 0.0,
-        "tool_resources": {
-            "code_interpreter": null,
-            "file_search": null
-        },
-        "top_p": 1.0
-    },
-    {
-        "id": "asst_R7T9rISEoE4JS2forSMoZKsl",
-        "created_at": 1715954215,
-        "description": "You are a manager agent. You direct the actions of the researcher agent. You are responsible for creating plans and strategies, coordinating activities, and compiling the final response.",
-        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager and a researcher.\nThe manager creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\nYou create a comprehensive plan for the researcher to follow.\nYou begin by thinking step by step to comprehend the task at hand.\nYou come up with a logical plan to complete the task.\nYou direct the researcher agent to complete research tasks.\nYou provide feedback and guidance to the researcher.\nYou assign tasks to the researcher and review their work.\nYou compile the research and findings into a final response.\nYour final response MUST include citations and references to the sources used.\nYour answer should use the infomraion presented by the researcher.\nYou should be aware of today's date to help you answer questions that require current information.\nHere is today's date and time (Timezone: UTC): {datetime}\n",
-        "metadata": {},
-        "model": "gpt-3.5-turbo",
-        "name": "Manager",
-        "object": "assistant",
-        "tools": [
-            {
-                "function": {
-                    "name": "SendMessage",
-                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient agent and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as the user does not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved. Do not send more than 1 message at a time.",
-                    "parameters": {
-                        "$defs": {
-                            "recipient": {
-                                "const": "Researcher",
-                                "enum": [
-                                    "Researcher"
-                                ],
-                                "title": "recipient",
-                                "type": "string"
-                            }
-                        },
-                        "properties": {
-                            "my_primary_instructions": {
-                                "description": "Please repeat your primary instructions step-by-step, including both completed and the following next steps that you need to perfrom. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message or additional_instructions parameters.",
-                                "title": "My Primary Instructions",
-                                "type": "string"
-                            },
-                            "recipient": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/$defs/recipient"
-                                    }
-                                ],
-                                "description": "Researcher: You are a researcher agent. You are responsible for conducting research tasks.\n"
-                            },
-                            "message": {
-                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
-                                "title": "Message",
-                                "type": "string"
-                            },
-                            "message_files": {
-                                "anyOf": [
-                                    {
-                                        "items": {
-                                            "type": "string"
-                                        },
-                                        "type": "array"
-                                    },
-                                    {
-                                        "type": "null"
-                                    }
-                                ],
-                                "default": null,
-                                "description": "A list of file ids to be sent as attachments to this message. Only use this if you have the file id that starts with 'file-'.",
-                                "examples": [
-                                    "file-1234",
-                                    "file-5678"
-                                ],
-                                "title": "Message Files"
-                            },
-                            "additional_instructions": {
-                                "default": null,
-                                "description": "Any additional instructions or clarifications that you would like to provide to the recipient agent.",
-                                "title": "Additional Instructions",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "message",
-                            "my_primary_instructions",
-                            "recipient"
-                        ],
-                        "type": "object"
-                    }
-                },
-                "type": "function"
-            }
-        ],
-        "response_format": "auto",
-        "temperature": 0.0,
-        "tool_resources": {
-            "code_interpreter": null,
-            "file_search": null
-        },
-        "top_p": 1.0
-    },
-    {
-        "id": "asst_cbOEGWjufgKN3UjsUJP9T3a8",
-        "created_at": 1715954215,
-        "description": "You are a researcher agent. You are responsible for conducting research tasks.",
-        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager and a researcher.\nThe manager creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\nYou use the tools available to you and the plan provided by the manager to conduct research.\nYou must provide the sources to all the information you find.\nYou can use the search SearchEngine tool to search for information on the web.\nYou can use the ScrapeWebsite tool to scrape content from a website.\nYou msut first use the SearchEngine tool to find information.\nYou must then select the best source from the search results and use the ScrapeWebsite tool to extract information.\n",
-        "metadata": {},
-        "model": "gpt-3.5-turbo",
-        "name": "Researcher",
-        "object": "assistant",
-        "tools": [
+            },
             {
                 "function": {
                     "name": "SearchEngine",
@@ -300,33 +137,14 @@
                             "search_engine_query"
                         ],
                         "type": "object"
-                    }
-                },
-                "type": "function"
-            },
-            {
-                "function": {
-                    "name": "ScrapeWebsite",
-                    "description": "ScrapeWebsite: A website scraping tool. You can use this tool to scrape the content of a website.\nYou must provide the URL of the website you want to scrape.",
-                    "parameters": {
-                        "properties": {
-                            "website_url": {
-                                "description": "The URL of the website to scrape the content from.",
-                                "title": "Website Url",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "website_url"
-                        ],
-                        "type": "object"
-                    }
+                    },
+                    "strict": false
                 },
                 "type": "function"
             }
         ],
         "response_format": "auto",
-        "temperature": 0.0,
+        "temperature": 0.3,
         "tool_resources": {
             "code_interpreter": null,
             "file_search": null
@@ -334,148 +152,31 @@
         "top_p": 1.0
     },
     {
-        "id": "asst_zto3bzq6sQ5dn4s8OGtuc0Et",
-        "created_at": 1715962852,
-        "description": "You are a manager agent. You direct the actions of the researcher agent. You are responsible for creating plans and strategies, coordinating activities, and compiling the final response.",
-        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager and a researcher.\nThe manager creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\nYou create a comprehensive plan for the researcher to follow.\nYou begin by thinking step by step to comprehend the task at hand.\nYou come up with a logical plan to complete the task.\nYou direct the researcher agent to complete research tasks.\nYou provide feedback and guidance to the researcher.\nYou assign tasks to the researcher and review their work.\nYou compile the research and findings into a final response.\nYour final response MUST include citations and references to the sources used.\nYour answer should use the infomraion presented by the researcher.\nYou should be aware of today's date to help you answer questions that require current information.\nHere is today's date and time (Timezone: UTC): {datetime}\n",
+        "id": "asst_jBEO3fHimJzkFPUDWBbL6GSR",
+        "created_at": 1726237998,
+        "description": "You are an expert in the energy field. You are responsible for finding energy data.",
+        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager, a researcher and an energy expert.\nThe manager asks the energy expert for data relating to energy consumptionThe manager creates a plan for the researcher to follow.\nThe energy expert finds data on energy consumption.The researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\n# WebResearcher Instructions\n\nYou use the tools available to you and the plan provided by the manager to conduct research\nYou must provide the sources to all the data you find.\nYou can use the StunsEnergy tool to search for data about energy consumption at Tiunda school\nThe source for StunsEnergy tool is found here: https://www.dataportal.se/sv/datasets/763_1422/tiunda-skola-uppsala-energimatning-15-minuters-data/apiexplore/1415\nYou must then select the best date and time to find the 3-phase_positive_total_active_energy.difference.\n",
         "metadata": {},
-        "model": "gpt-4o",
-        "name": "Manager",
+        "model": "gpt-4o-2024-08-06",
+        "name": "EnergyExpert",
         "object": "assistant",
         "tools": [
             {
                 "function": {
-                    "name": "SendMessage",
-                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient agent and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as the user does not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved. Do not send more than 1 message at a time.",
+                    "name": "StunsEnergy",
+                    "description": "Correctly extracted `StunsEnergy` with all the required parameters with correct types",
                     "parameters": {
-                        "$defs": {
-                            "recipient": {
-                                "const": "Researcher",
-                                "enum": [
-                                    "Researcher"
-                                ],
-                                "title": "recipient",
-                                "type": "string"
-                            }
-                        },
-                        "properties": {
-                            "my_primary_instructions": {
-                                "description": "Please repeat your primary instructions step-by-step, including both completed and the following next steps that you need to perfrom. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message or additional_instructions parameters.",
-                                "title": "My Primary Instructions",
-                                "type": "string"
-                            },
-                            "recipient": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/$defs/recipient"
-                                    }
-                                ],
-                                "description": "Researcher: You are a researcher agent. You are responsible for conducting research tasks.\n"
-                            },
-                            "message": {
-                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
-                                "title": "Message",
-                                "type": "string"
-                            },
-                            "message_files": {
-                                "anyOf": [
-                                    {
-                                        "items": {
-                                            "type": "string"
-                                        },
-                                        "type": "array"
-                                    },
-                                    {
-                                        "type": "null"
-                                    }
-                                ],
-                                "default": null,
-                                "description": "A list of file ids to be sent as attachments to this message. Only use this if you have the file id that starts with 'file-'.",
-                                "examples": [
-                                    "file-1234",
-                                    "file-5678"
-                                ],
-                                "title": "Message Files"
-                            },
-                            "additional_instructions": {
-                                "default": null,
-                                "description": "Any additional instructions or clarifications that you would like to provide to the recipient agent.",
-                                "title": "Additional Instructions",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "message",
-                            "my_primary_instructions",
-                            "recipient"
-                        ],
-                        "type": "object"
-                    }
+                        "properties": {},
+                        "type": "object",
+                        "required": []
+                    },
+                    "strict": false
                 },
                 "type": "function"
             }
         ],
         "response_format": "auto",
-        "temperature": 0.0,
-        "tool_resources": {
-            "code_interpreter": null,
-            "file_search": null
-        },
-        "top_p": 1.0
-    },
-    {
-        "id": "asst_zRbBf0eDcgx1l3J5et922FKF",
-        "created_at": 1715962854,
-        "description": "You are a researcher agent. You are responsible for conducting research tasks.",
-        "instructions": "You are a team of agents working together on research tasks.\nThe team consists of a manager and a researcher.\nThe manager creates a plan for the researcher to follow.\nThe researcher conducts research using the tools available.\nThe manager compiles the research and findings into a final response.\nYou must work together to complete the task at hand.\n\n\nYou use the tools available to you and the plan provided by the manager to conduct research.\nYou must provide the sources to all the information you find.\nYou can use the search SearchEngine tool to search for information on the web.\nYou can use the ScrapeWebsite tool to scrape content from a website.\nYou must first use the SearchEngine tool to find information.\nYou must then select the best source from the search results and use the ScrapeWebsite tool to extract information.\n",
-        "metadata": {},
-        "model": "gpt-4o",
-        "name": "Researcher",
-        "object": "assistant",
-        "tools": [
-            {
-                "function": {
-                    "name": "SearchEngine",
-                    "description": "SearchEngine: A search engine tool. You can use this tool to search for a specific query on a search engine.\nThe output of the search engine is a dictionary where the key is the source of the information and the value is the content.",
-                    "parameters": {
-                        "properties": {
-                            "search_engine_query": {
-                                "description": "Search engine query to be executed by the tool",
-                                "title": "Search Engine Query",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "search_engine_query"
-                        ],
-                        "type": "object"
-                    }
-                },
-                "type": "function"
-            },
-            {
-                "function": {
-                    "name": "ScrapeWebsite",
-                    "description": "ScrapeWebsite: A website scraping tool. You can use this tool to scrape the content of a website.\nYou must provide the URL of the website you want to scrape.",
-                    "parameters": {
-                        "properties": {
-                            "website_url": {
-                                "description": "The URL of the website to scrape the content from.",
-                                "title": "Website Url",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "website_url"
-                        ],
-                        "type": "object"
-                    }
-                },
-                "type": "function"
-            }
-        ],
-        "response_format": "auto",
-        "temperature": 0.0,
+        "temperature": 0.3,
         "tool_resources": {
             "code_interpreter": null,
             "file_search": null

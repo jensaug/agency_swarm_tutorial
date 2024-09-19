@@ -1,49 +1,64 @@
 
-# Setting Up Agency Swarm Script
+# RAG and Intelligent Agents using Agency Swarm
 
-### Prerequisites
-1. **Install Anaconda:**  
-   Download Anaconda from [https://www.anaconda.com/](https://www.anaconda.com/).
+This repo is based on the excellent and short [agency-swarm-tutorial by John Adojo](https://github.com/john-adeojo/agency_swarm_tutorial.git)
 
-2. **Create a Virtual Environment:**
-   ```bash
-   conda create -n swarm_env python=3.10 pip
-   ```
-   
-3. **Activate the Virtual Environment:**
-   ```bash
-   conda activate swarm_env
-   ```
+## Rag implementations
+
+RAG examples have been added for:
+* RAG using custom APIs
+* RAG using custom SQL databases
+
+## Prerequisities
+* OpenAPI API key is needed
+* Other keys are optional
+
+## Gettings started
 
 ### Clone and Navigate to the Repository
+
 1. **Clone the Repo:**
    ```bash
-   git clone https://github.com/john-adeojo/agency_swarm_tutorial.git
+   git clone https://github.com/jensaug/agency_swarm_tutorial.git
    ```
 
 2. **Navigate to the Repo:**
    ```bash
-   cd /path/to/your-repo/agency_swarm_tutorial
+   cd agency_swarm_tutorial
    ```
 
-3. **Install Requirements:**
+3. **Create a Virtual Environment:**
+   ```bash
+   python -m venv .venv
+   ```
+   
+4. **Activate the Virtual Environment:**
+   ```bash
+   source .venv/bin/activate
+   ```
+
+5. **Install Requirements:**
    ```bash
    pip install -r requirements.txt
    ```
 
-### Configure API Keys
-1. **Open the `config.yaml`:**
+## Configure API Keys
+
+1. **Add environments manually OR create a file  `.env` looking like this:**
    ```bash
-   nano config.yaml
+   ELECTRICITY_MAP_API_KEY="XXX"
+   OPENAI_API_KEY="YYY"
+   SERPER_DEV_API_KEY="ZZZ"
    ```
 
 2. **Enter API Keys:**
-   - **Serper API Key:** Get it from [https://serper.dev/](https://serper.dev/)
-   - **OpenAI API Key:** Get it from [https://openai.com/](https://openai.com/)
+   - **ElectricityMap API (free) key**: Get it from [Electricity Maps](https://www.electricitymaps.com/free-tier-api)
+   - **Serper API (free) Key:** Get it from [serper.dev](https://serper.dev/)
+   - **OpenAI API Key:** Get it from [OpenAI](https://openai.com/)
 
-### Run Your Query
+## Run Agency
 ```bash
-python app.py "YOUR QUERY"
+python agency.py
 ```
-### Note!
+## Note!
 settings.json is automatomatically created by Agency Swarm.

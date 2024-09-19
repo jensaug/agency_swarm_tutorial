@@ -17,7 +17,6 @@ class SearchEngine(BaseTool):
     )
 
 
-
     def format_results(self, organic_results):
 
         result_strings = []

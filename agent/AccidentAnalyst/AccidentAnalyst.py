@@ -1,13 +1,13 @@
 from agency_swarm.agents import Agent
 
 description = (
-    "You are a researcher agent. You are responsible for conducting research tasks."
+    "You are an analyst of accidents on sea, on lad and in air. You are responsible for finding facts and statistics about accidents"
 )
 
-class WebResearcher(Agent):
+class AccidentAnalyst(Agent):
     def __init__(self):
         super().__init__(
-            name="WebResearcher",
+            name="AccidentAnalyst",
             description=description,
             instructions="./instructions.md",
             files_folder="./files",

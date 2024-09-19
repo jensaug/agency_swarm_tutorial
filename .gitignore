@@ -3,3 +3,5 @@ config.yaml
 __pycache__
 .env
 settings.json
+chroma.sqlite3
+[0-9]*

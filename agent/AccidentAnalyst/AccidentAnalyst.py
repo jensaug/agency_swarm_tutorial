@@ -1,7 +1,7 @@
 from agency_swarm.agents import Agent
 
 description = (
-    "You are an analyst of accidents on sea, on lad and in air. You are responsible for finding facts and statistics about accidents"
+    "You are an expert in question related to accidents and incidents on sea, land and in air. You are responsible for finding data and statistics."
 )
 
 class AccidentAnalyst(Agent):

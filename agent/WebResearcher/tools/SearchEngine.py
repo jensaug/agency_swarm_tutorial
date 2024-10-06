@@ -41,13 +41,7 @@ class SearchEngine(BaseTool):
         try:
             response = requests.post(search_url, headers=headers, data=payload)
             response.raise_for_status()  # Raise an HTTPError for bad responses (4XX, 5XX)
-            results = response.json()
-            
-            # Check if 'organic' results are in the response
-            if 'organic' in results:
-                return self.format_results(results['organic'])
-            else:
-                return "No organic results found."
+            return response.json()
 
         except requests.exceptions.HTTPError as http_err:
             return f"HTTP error occurred: {http_err}"

@@ -1,8 +1,9 @@
 import os
 from agency_swarm import Agency, set_openai_key
+
 from agent.AccidentAnalyst import AccidentAnalyst
 from agent.EnergyExpert import EnergyExpert
-from agent.JensAssistant import JensAssistant
+#from agent.jens import JensAssistant
 from agent.Manager import Manager
 from agent.WebResearcher import WebResearcher
 
@@ -16,18 +17,18 @@ MISSION_STATEMENT = (
     "You must work together to complete the task at hand.\n"
 )
 
-manager = Manager()
-webResearcher = WebResearcher()
-energyExpert = EnergyExpert()
-jensAssistant = JensAssistant()
-accidentAnalyst = AccidentAnalyst()
+manager = Manager()                 # No RAG
+webResearcher = WebResearcher()     # RAG using Internet search and scrape
+energyExpert = EnergyExpert()       # RAG using HTTP API
+accidentAnalyst = AccidentAnalyst() # RAG using dynamic SQL data
+#jensAssistant = JensAssistant()     # RAG using local documents
 
 agency = Agency([
-        manager,                    # No RAG
-       [manager, webResearcher],    # RAG using Internet search and scrape 
-       [manager, energyExpert],     # RAG using HTTP API
-       [manager, jensAssistant],    # RAG using local documents
-       [manager, accidentAnalyst]   # RAG using SQL data
+        manager,
+       [manager, webResearcher],
+       [manager, energyExpert],
+       [manager, accidentAnalyst]
+#       [manager, jensAssistant],    
      ],
      shared_instructions= MISSION_STATEMENT,
      temperature=0,

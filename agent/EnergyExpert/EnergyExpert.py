@@ -1,7 +1,7 @@
 from agency_swarm.agents import Agent
 
 description = (
-    "You are an expert in the energy field. You are responsible for finding energy data."
+    "You are an expert in the energy field. You are responsible for finding data about energy and power consumption."
 )
 
 class EnergyExpert(Agent):

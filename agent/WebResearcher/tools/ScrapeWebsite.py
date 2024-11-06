@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 class ScrapeWebsite(BaseTool):
     """
-    ScrapeWebsite: A website scraping tool. You can use this tool to scrape the content of a website.
+    This is a website scraping tool. You can use this tool to scrape the content of a website.
     You must provide the URL of the website you want to scrape.
     """
     website_url: str = Field(

@@ -1,7 +1,7 @@
 from agency_swarm.agents import Agent
 
 description = (
-    "You are a researcher agent. You are responsible for conducting research tasks."
+    "You are a researcher agent. You are responsible for conducting general research tasks."
 )
 
 class WebResearcher(Agent):

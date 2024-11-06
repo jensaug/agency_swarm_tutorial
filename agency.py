@@ -12,9 +12,10 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 set_openai_key(OPENAI_API_KEY)
 
 MISSION_STATEMENT = (
-    "You are a team of agents working together on research tasks.\n"
-    "The manager compiles the research and findings into a final response.\n"
-    "You must work together to complete the task at hand.\n"
+    "Agents in this agency work together on tasks related to general research, energy consumption and statistics about accidents. "
+    "An agent should only handle a task it has specific tools to work with, except for the Manager agent who may handle general tasks. "
+    "The Manager agent compiles the findings into a final response."
+    "This agency is specific about sources of information"
 )
 
 manager = Manager()                 # No RAG

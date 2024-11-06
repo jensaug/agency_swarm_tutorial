@@ -6,9 +6,9 @@ from pydantic import Field
 
 class ElectricityMapPowerBreakdown(BaseTool):
     """
-    ElectricityMapPowerBreakdown: A tool for fetcing power breakdowns. You can use this tool to get data for power consumption breakdowns for different zone abbreviations.
-    You must provide the zone abbreviation in uppercase
-    The source for this information is "https://api.electricitymap.org/v3/power-breakdown/latest?zone=${zone}", where ${zone} is the provide zone abbreviation in uppercase
+    This tool can find power breakdowns for energy consumptions in different zones.
+    You must provide the zone abbreviation in uppercase.
+    The source for this information is "https://api.electricitymap.org/v3/power-breakdown/latest?zone=${zone}"
     The output of this tool is a dictionary where the key is the source of the information and the value is the content.
     """
     zone: str = Field(

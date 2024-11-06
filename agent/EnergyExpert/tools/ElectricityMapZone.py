@@ -5,7 +5,9 @@ from agency_swarm.tools import BaseTool
 
 class ElectricityMapZone(BaseTool):
     """
-    ElectricityMapZone: A tool for fetcing zone abbreviations in uppercase for different zone names. A zone name can be a country or territory.
+    This tool can retrieve zone abbreviations for different countries and territories in the world which consumes power.
+    Zone abbreviations are in uppercase for different zone names. A zone name can be a country or territory.
+    The source for this API is https://api.electricitymap.org/v3/zones
     """
     
     def run(self):

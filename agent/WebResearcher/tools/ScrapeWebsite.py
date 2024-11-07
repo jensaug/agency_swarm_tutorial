@@ -39,7 +39,7 @@ class ScrapeWebsite(BaseTool):
 
             print(f"Successfully scraped content from {self.website_url}")
 
-            return {self.website_url: clean_text}
+            return {self.website_url: clean_text[:1048000]}
 
         except requests.exceptions.RequestException as e:
             print(f"Error retrieving content from {self.website_url}: {e}")

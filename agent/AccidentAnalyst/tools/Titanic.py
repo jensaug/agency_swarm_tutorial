@@ -14,8 +14,8 @@ class MyVanna(ChromaDB_VectorStore, OpenAI_Chat):
 class Titanic(BaseTool):
 
     """
-    Titanic: A tool for looking gathering information and statistics regarding the 1912 accident when the Titanic ship sunk.
-    The source for this information is the Titanic database
+    This is a tool for gathering data and statistics regarding the 1912 accident when the Titanic ship sunk.
+    The source for this information is the Kagge Titanic Dataset at https://www.kaggle.com/c/titanic/data
     The output of this tool is a dictionary where the key is the source of the information and the value is the answer to the question.
     """
     question: str = Field(

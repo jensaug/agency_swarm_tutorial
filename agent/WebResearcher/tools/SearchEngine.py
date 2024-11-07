@@ -3,9 +3,6 @@ import os
 import requests
 from agency_swarm.tools import BaseTool
 from pydantic import Field
-#from utils import load_config
-
-#load_config(file_path="./config.yaml")
 
 class SearchEngine(BaseTool):
     """

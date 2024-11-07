@@ -60,5 +60,24 @@ RAG examples have been added for:
 ```bash
 python agency.py
 ```
+
+## Example queries
+
+To Manager:
+```
+List some research on voting turnout in the Sweden
+```
+To ElectrityExpert:
+```
+Tell me about energy consumption at Tiunda School
+```
+```
+And Brasil?
+```
+To AccidentAnalyst:
+```
+On Titanic, how many embarked from each town?
+```
+
 ## Note!
 settings.json is automatomatically created by Agency Swarm.

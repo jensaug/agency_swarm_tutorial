@@ -80,7 +80,7 @@ And Brasil?
 ```
 To AccidentAnalyst:
 ```
-On Titanic, how many embarked from each town?
+On Titanic, how many women from each town survived?
 ```
 
 ## Note!

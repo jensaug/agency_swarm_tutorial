@@ -65,6 +65,10 @@ python agency.py
 
 To Manager:
 ```
+What can you help me with?
+```
+To WebResearcher:
+```
 List some research on voting turnout in the Sweden
 ```
 To ElectrityExpert:

@@ -17,7 +17,7 @@ MISSION_STATEMENT = (
     "The Manager agent compiles the findings into a final response."
     "This agency is specific about sources of information"
 )
-    
+
 manager = Manager()                 # No RAG
 webResearcher = WebResearcher()     # RAG using Internet search and scrape
 energyExpert = EnergyExpert()       # RAG using HTTP API
@@ -28,7 +28,10 @@ agency = Agency([
         manager,
        [manager, webResearcher],
        [manager, energyExpert],
-       [manager, accidentAnalyst]
+       [manager, accidentAnalyst],
+        webResearcher,
+        energyExpert,
+        accidentAnalyst
 #       [manager, jensAssistant],    
      ],
      shared_instructions= MISSION_STATEMENT,
